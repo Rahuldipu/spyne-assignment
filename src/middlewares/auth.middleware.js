@@ -5,11 +5,11 @@ import User from "../models/user.model.js";
 
 export const verify = async (req, res, next) => {
     try {
-        const authHeader = req.headers["cookie"];
+        const authHeader = req.headers["authorization"];
         if (!authHeader)
             throw new CustomHttpError(401, "You are not authorised to access this resource");
 
-        const cookie = authHeader.split("=")[1];
+        const cookie = authHeader.split(" ")[1];
 
         jwt.verify(cookie, process.env.JWT_SECRET, async (err, decoded) => {
             if (err) {

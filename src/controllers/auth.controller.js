@@ -72,9 +72,10 @@ const login = async (req, res, next) => {
             sameSite: "None",
         };
         const token = user.generateAccessToken(); // generate session token for user
-        res.cookie("SessionID", token, options); // set the token to response header, so that the client sends it back on each subsequent request
+        
         res.status(200).json({
             status: "success",
+            accessToken: token,
             message: "You have successfully logged in.",
         });
     } catch (error) {
