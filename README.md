@@ -1,6 +1,6 @@
 # Social Media Application
 # Overview
-This project is a microservices-based social media application built with Node.js and MongoDB. It allows users to sign up, log in, create and manage posts, follow other users, comment on posts, like posts and comments, and view counts of posts. It also supports uploading images to AWS S3.
+This project is a social media application built with Node.js and MongoDB. It allows users to sign up, log in, create and manage posts, follow other users, comment on posts, like posts and comments, and view counts of posts. It also supports uploading images to AWS S3.
 
 # Prerequisites
 Node.js
