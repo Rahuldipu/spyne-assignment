@@ -2,6 +2,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 import connectMongoDB from "./src/clients/mongodb.client.js";
 import authRouter from "./src/routes/auth.route.js";
@@ -9,9 +10,13 @@ import userRouter from "./src/routes/user.route.js";
 import postRouter from "./src/routes/post.route.js";
 import { errorHandler } from "./src/middlewares/errorHandler.middleware.js";
 import { logger } from "./src/loggers/logger.js";
+import swaggerDocs from "./swagger.js";
 
 dotenv.config();
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors());
 
 // body-parser middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -45,3 +50,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     logger.info(`Server is running on port ${PORT}`);
 });
+
+swaggerDocs(app, PORT);
